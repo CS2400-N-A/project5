@@ -14,6 +14,10 @@ public class DriverGT{
 			}
 		}
 		
+		/* for (String e: edges) {
+			graph.connect(e.charAt(1), e.charAt(3));
+		} */
+		
 		
 	}
 }
