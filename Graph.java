@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 // Taken from professor's slides, 
 
 public class Graph<T>
@@ -28,9 +30,28 @@ public class Graph<T>
     }
     
     public QueueInterface<T> getBreadthFirstTraversal(T originLabel) {
-        recetVertices();
+        resetVertices();
         QueueInterface<T> traversalOrder = new LinkedQueue<T>();
-        QueueInterface<GraphVertex<T>> vertex Queue = new LinkedQueue<GraphVertex<T>>();
+        QueueInterface<GraphVertex<T>> vertexQueue = new LinkedQueue<GraphVertex<T>>();
+        VertexInterface<T> originVertex = vertices.getValue(originLabel);
+        originVertex.visit();
+        traversalOrder.enqueue(originLabel);
+        vertexQueue.enqueue(originVertex);
+
+        while(!vertexQueue.isEmpty()) {
+            VertexInterface<T> frontVertex = vertexQueue.dequeue();
+            Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+            while (neighbors.hasNext()) {
+                VertexInterface<T> nextNeighbor = neighbors.next();
+                if(!nextNeighbor.isVisited()) {
+                    nextNeighbor.visit();
+                    traversalOrder.enqueue(nextNeighbor.getLabel());
+                    vertexQueue.enqueue(nextNeighbor);
+                }
+            }
+        }
+        return traversalOrder;
+
     }
     
     
