@@ -7,10 +7,6 @@ public class Graph<E>
 	private boolean[][] edges;
 	private E[] labels;
 	
-	public Graph() {
-		this(null);
-	}
-	
 	public Graph(int n) {
 		edges = new boolean[n][n];
 		labels = (E[]) new Object[n];
@@ -53,7 +49,7 @@ public class Graph<E>
         edges[source][target] = false;
     }
     // Change the label of a vertex of this Graph
-    public void setLabel(int vertex, T newLabel) {
+    public void setLabel(int vertex, E newLabel) {
         labels[vertex] = newLabel;
     }
     // Accessor method to determine the number of vertices in this Graph
