@@ -9,6 +9,9 @@ public class DriverGT{
 		 */
 		int[] edges = {0, 1, 0, 3, 0, 4, 1, 4, 3, 6, 4, 5, 4, 7, 6, 7, 5, 7, 7, 8, 2, 1, 8, 5};
 		Graph<Character> graph = new Graph<Character>(vertices.length); // declears a new graph
+		for(int i=0;i <edges.length; i++){
+			graph.setLabel(i, vertices[i]);
+		}
 		for(int i=0; i<edges.length-2; i+=2){	//Creates the edges
 			graph.addEdge(i, i+1);
 		}
