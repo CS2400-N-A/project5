@@ -7,6 +7,7 @@ public class Graph<E>
 	private boolean[][] edges;
 	private E[] labels;
 	
+    @SuppressWarnings("unchecked")
 	public Graph(int n) {
 		edges = new boolean[n][n];
 		labels = (E[]) new Object[n];
@@ -64,7 +65,7 @@ public class Graph<E>
        @param origin  An object that labels the origin vertex of the traversal.
        @return  A queue of labels of the vertices in the traversal, with
                 the label of the origin vertex at the queue's front. */
-    public QueueInterface<T> getBreadthFirstTraversal(T origin) {
+    public QueueInterface<T> getBreadthFirstTraversal(E origin) {
         resetVertices();
         QueueInterface<T> traversalOrder = new LinkedQueue<T>();
         QueueInterface<GraphVertex<T>> vertexQueue = new LinkedQueue<GraphVertex<T>>();
