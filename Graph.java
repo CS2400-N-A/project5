@@ -65,20 +65,20 @@ public class Graph<E>
        @param origin  An object that labels the origin vertex of the traversal.
        @return  A queue of labels of the vertices in the traversal, with
                 the label of the origin vertex at the queue's front. */
-    public QueueInterface<T> getBreadthFirstTraversal(E origin) {
+    public QueueInterface<E> getBreadthFirstTraversal(E origin) {
         resetVertices();
-        QueueInterface<T> traversalOrder = new LinkedQueue<T>();
-        QueueInterface<GraphVertex<T>> vertexQueue = new LinkedQueue<GraphVertex<T>>();
-        VertexInterface<T> originVertex = vertices.getValue(origin);
+        QueueInterface<E> traversalOrder = new LinkedQueue<E>();
+        QueueInterface<GraphVertex<E>> vertexQueue = new LinkedQueue<GraphVertex<E>>();
+        VertexInterface<E> originVertex = vertices.getValue(origin);
         originVertex.visit();
         traversalOrder.enqueue(origin);
         vertexQueue.enqueue(originVertex);
                         
         while(!vertexQueue.isEmpty()) {
-            VertexInterface<T> frontVertex = vertexQueue.dequeue();
-            Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+            VertexInterface<E> frontVertex = vertexQueue.dequeue();
+            Iterator<VertexInterface<E>> neighbors = frontVertex.getNeighborIterator();
             while (neighbors.hasNext()) {
-                VertexInterface<T> nextNeighbor = neighbors.next();
+                VertexInterface<E> nextNeighbor = neighbors.next();
                 if(!nextNeighbor.isVisited()) {
                     nextNeighbor.visit();
                     traversalOrder.enqueue(nextNeighbor.getLabel());
@@ -93,19 +93,19 @@ public class Graph<E>
         @param origin  An object that labels the origin vertex of the traversal.
         @return A queue of labels of the vertices in the traversal, with
                 the label of the origin vertex at the queue's front. */
-    public QueueInterface<T> getDepthFirstTraversal(T origin) {
+    public QueueInterface<E> getDepthFirstTraversal(E origin) {
         resetVertices();
-        QueueInterFace<T> traversalOrder = new LinkedQueue<T>();
-        StackInterface<VertexInterface<T>> vertexStack = new LinkedStack<>();
+        QueueInterFace<E> traversalOrder = new LinkedQueue<E>();
+        StackInterface<VertexInterface<E>> vertexStack = new LinkedStack<>();
             
-        VertexInterface<T> originVertex = vertices.getValue(origin);
+        VertexInterface<E> originVertex = vertices.getValue(origin);
         originVertex.visit();
         traversalOrder.enqueue(origin);
         vertexStack.push(originVertex);
             
         while (!vertexStack.isEmpty()) {
-            VertexInterface<T> topVertex = vertexStack.peek();
-            VertexInterface<T> nextNeighbor = topVertex.getUnvisitedNeighbor();
+            VertexInterface<E> topVertex = vertexStack.peek();
+            VertexInterface<E> nextNeighbor = topVertex.getUnvisitedNeighbor();
             
             if (nextNeighbor != null) {
                 nextNeighbor.visit();
