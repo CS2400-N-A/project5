@@ -61,6 +61,16 @@ public class Graph<E>
         return labels.length;
     }
 
+    protected void resetVertices() {
+        Iterator<VertexInterface<E>> vertexIterator = vertices.getValueIterator();
+        while (vertexIterator.hasNext()){
+            VertexInterface<E> nextVertex = vertexIterator.next();
+            nextVertex.unvisit();
+            nextVertex.setCost(0);
+            nextVertex.setPredecessor(null);
+        } // end while
+    } // end resetVertices
+
     /** Performs a breadth-first traversal of this graph.
        @param origin  An object that labels the origin vertex of the traversal.
        @return  A queue of labels of the vertices in the traversal, with
@@ -68,7 +78,7 @@ public class Graph<E>
     public QueueInterface<E> getBreadthFirstTraversal(E origin) {
         resetVertices();
         QueueInterface<E> traversalOrder = new LinkedQueue<E>();
-        QueueInterface<GraphVertex<E>> vertexQueue = new LinkedQueue<GraphVertex<E>>();
+        QueueInterface<VertexInterface<E>> vertexQueue = new LinkedQueue<>();
         VertexInterface<E> originVertex = vertices.getValue(origin);
         originVertex.visit();
         traversalOrder.enqueue(origin);
@@ -95,7 +105,7 @@ public class Graph<E>
                 the label of the origin vertex at the queue's front. */
     public QueueInterface<E> getDepthFirstTraversal(E origin) {
         resetVertices();
-        QueueInterFace<E> traversalOrder = new LinkedQueue<E>();
+        QueueInterface<E> traversalOrder = new LinkedQueue<E>();
         StackInterface<VertexInterface<E>> vertexStack = new LinkedStack<>();
             
         VertexInterface<E> originVertex = vertices.getValue(origin);
