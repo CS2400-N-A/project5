@@ -1,4 +1,4 @@
-Carlos Castrillo (cjcastrillo) -  
+Carlos Castrillo (cjcastrillo) - Worked on Driver, added source code classes, and implemented unfinished methods in those clases.  
 Cindy Lu (lucindy7) -  
 Orrane Reid (rainyday21) -
 
