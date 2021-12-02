@@ -15,5 +15,19 @@ public class DriverGT{
 		for(int i=0; i<edges.length-2; i+=2){	//Creates the edges
 			graph.addEdge(i, i+1);
 		}
+		
+		if (graph.size() <= 0 ) {
+			System.out.println("no graph"); //checks for empty graphs
+		}
+		else {
+			System.out.println("The breadth first traversal of the graph is: ");
+		while (!(graph.getBreadthFirstTraversal(vertices[0]).isEmpty())){
+			System.out.println(graph.getBreadthFirstTraversal(vertices[0]).dequeue()); //dequeues from stack
+			}
+			System.out.println("The depth first traversal of the graph is: ");
+			while (!(graph.getDepthFirstTraversal(vertices[0]).isEmpty())) {
+			System.out.println(graph.getDepthFirstTraversal(vertices[0]).dequeue());
+			}
+		}
 	}
 }
