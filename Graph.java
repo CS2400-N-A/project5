@@ -6,11 +6,13 @@ public class Graph<E>
 {
 	private boolean[][] edges;
 	private E[] labels;
+    private DictionaryInterface<E, VertexInterface<E>> vertices;
 	
     @SuppressWarnings("unchecked")
 	public Graph(int n) {
 		edges = new boolean[n][n];
 		labels = (E[]) new Object[n];
+        vertices = new UnsortedLinkedDictionary<>();
 	}
     
     // Accessor method to get the label of the vertex in this Graph
