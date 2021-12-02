@@ -107,30 +107,28 @@ next = nextNode;
         
     }
     
-    
-} // end UnsortedLinkedDictionary
-
-class NodeIterator<E> implements Iterator<E> {
+    private class NodeIterator<E> implements Iterator<E> {
 	
-	private Node firstNode;
 	
-	public Node
-	
-	public boolean hasNext() {
-		if(firstNode.next() == null) {
+		public boolean hasNext() {
+			if(firstNode == null || firstNode.next == null) {
+				return false;
+			}
+			return true;
+		}
+		
+		public E next() {
+			Node nextNode = firstNode.next;
+			
+		return nextNode.getValue();
+		}
+		
+		public void remove() {
 			
 		}
-		return false;
-	}
-	
-	public E next() {
-	
-	return null;
-	}
-	
-	public void remove() {
 	
 	}
+	
+} // end UnsortedLinkedDictionary
 
-}
 

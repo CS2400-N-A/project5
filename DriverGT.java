@@ -12,7 +12,7 @@ public class DriverGT{
 		for(int i=0;i <vertices.length; i++){
 			graph.setLabel(i, vertices[i]);
 		}
-		for(int i=0; i<(edges.length/2); i+=2){	//Creates the edges
+		for(int i=0; i<edges.length-2; i+=2){	//Creates the edges
 			graph.addEdge(edges[i], edges[i+1]);
 		}
 		
