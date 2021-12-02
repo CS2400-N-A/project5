@@ -9,28 +9,77 @@ public UnsortedLinkedDictionary(){
     firstNode = null;
     numberOfEntries = 0;
 } // end default constructor
-    @Override
+
     public V add(K key, V value) {
-    // TODO Auto-generated method stub
-        return null;
+        if(key == null || value == null)
+            throw new IllegalArgumentException("No null entries");
+        else{
+            V item = null;
+            Node currentNode = firstNode;
+            while(currentNode != null){
+                if(currentNode.key.equals(key)){
+                    item = currentNode.value;
+                    currentNode.value = value;
+                    return item;
+                }
+                currentNode = currentNode.next;
+            }
+            if(isEmpty()){
+                Node newNode = new Node(key, value);
+                firstNode = newNode;
+            }
+            else{
+                Node newNode = new Node(key, value, firstNode);
+                firstNode = newNode;
+            }
+            numberOfEntries++;
+            return item;
+        }
     }
 
-    @Override
     public V remove(K key) {
-    // TODO Auto-generated method stub
-       return null;
+        V item = null;
+        Node currentNode = firstNode;
+        while(currentNode != null){
+            if(currentNode.key.equals(key)){
+                item = currentNode.value;
+                numberOfEntries--;
+                currentNode.key = firstNode.key;
+                currentNode.value = firstNode.value;
+                firstNode = firstNode.next;
+                return item;
+            }
+            currentNode = currentNode.next;
+        }
+        return item;
     }
 
-    @Override
-    public V getValue(K key) {
-    // TODO Auto-generated method stub
-        return null;
+    public V getValue(K key){
+        V value = null;
+        Node currentNode = firstNode;
+        while(currentNode != null){
+            if(currentNode.key.equals(key)){
+                value = currentNode.value;
+                return value;
+            }
+            currentNode = currentNode.next;
+        }
+        return value;
     }
 
-    @Override
     public boolean contains(K key) {
-    // TODO Auto-generated method stub
-        return false;
+        boolean found = false;
+        Node currentNode = firstNode;
+        if(currentNode == null)
+            return found;
+        while(currentNode != null){
+            if(currentNode.key.equals(key)){
+                found = true;
+                return found;
+            }
+            currentNode = currentNode.next;
+        }
+        return found;
     }
 
     @Override
@@ -45,21 +94,17 @@ public UnsortedLinkedDictionary(){
         return null;
     }
 
-    @Override
     public boolean isEmpty() {
-    // TODO Auto-generated method stub
-        return false;
+        return numberOfEntries == 0 && firstNode == null;
     }
 
-    @Override
     public int getSize() {
-    // TODO Auto-generated method stub
-        return 0;
+        return numberOfEntries;
     }
 
-    @Override
     public void clear() {
-    // TODO Auto-generated method stub
+        firstNode = null;
+        numberOfEntries = 0;
     }
  
       private class Node{
