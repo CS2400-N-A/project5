@@ -60,13 +60,6 @@ public class Graph<E>
     public int size() {
         return labels.length;
     }
-<<<<<<< HEAD
-    
-    public QueueInterface<T> getBreadthFirstTraversal(T originLabel) {
-        recentVertices();
-        QueueInterface<T> traversalOrder = new LinkedQueue<T>();
-        QueueInterface<GraphVertex<T>> vertexQueue = new LinkedQueue<GraphVertex<T>>();
-=======
 
     protected void resetVertices() {
         Iterator<VertexInterface<E>> vertexIterator = vertices.getValueIterator();
@@ -133,7 +126,6 @@ public class Graph<E>
             }
         }
         return traversalOrder;
->>>>>>> 5e8668d07ef769d52f6f9d752dfee13efd018023
     }
     
 }
