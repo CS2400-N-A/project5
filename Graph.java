@@ -28,9 +28,9 @@ public class Graph<T>
     }
     
     public QueueInterface<T> getBreadthFirstTraversal(T originLabel) {
-        recetVertices();
+        recentVertices();
         QueueInterface<T> traversalOrder = new LinkedQueue<T>();
-        QueueInterface<GraphVertex<T>> vertex Queue = new LinkedQueue<GraphVertex<T>>();
+        QueueInterface<GraphVertex<T>> vertexQueue = new LinkedQueue<GraphVertex<T>>();
     }
     
     
