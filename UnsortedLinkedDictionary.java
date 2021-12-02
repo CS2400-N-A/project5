@@ -7,6 +7,8 @@ private int  numberOfEntries;
 
 public UnsortedLinkedDictionary()
 {
+	firstNode = null;
+	numberOfEntries = 0;
 } // end default constructor
 
 		   /* < Implementations of methods in DictionaryInterface. >  . . . */
@@ -34,20 +36,33 @@ next = nextNode;
 
     @Override
     public V add(K key, V value) {
-        // TODO Auto-generated method stub
-        return null;
+        
+        Node newNode = new Node(key, value);
+        newNode.next = firstNode;
+        firstNode = newNode;
+        numberOfEntries++;
     }
 
     @Override
     public V remove(K key) {
         // TODO Auto-generated method stub
+        if (firstNode != null) {
+            V value = firstNode.getValue(key);
+            firstNode = firstNode.next;
+            numberOfEntries--;
+            return value;
+        }
         return null;
     }
 
     @Override
     public V getValue(K key) {
         // TODO Auto-generated method stub
-        return null;
+       do {
+        
+       } while
+        
+        
     }
 
     @Override
@@ -59,7 +74,13 @@ next = nextNode;
     @Override
     public Iterator<K> getKeyIterator() {
         // TODO Auto-generated method stub
-        return null;
+        K[] temp = new K[numberOfEntries];
+        while (firstNode != null) {
+            
+        }
+        Iterator<K> iter  = 
+        return iter;
+        
     }
 
     @Override
@@ -77,7 +98,7 @@ next = nextNode;
     @Override
     public int getSize() {
         // TODO Auto-generated method stub
-        return 0;
+        return numberOfEntries;
     }
 
     @Override
@@ -85,5 +106,31 @@ next = nextNode;
         // TODO Auto-generated method stub
         
     }
+    
+    
 } // end UnsortedLinkedDictionary
+
+class NodeIterator<E> implements Iterator<E> {
+	
+	private Node firstNode;
+	
+	public Node
+	
+	public boolean hasNext() {
+		if(firstNode.next() == null) {
+			
+		}
+		return false;
+	}
+	
+	public E next() {
+	
+	return null;
+	}
+	
+	public void remove() {
+	
+	}
+
+}
 
