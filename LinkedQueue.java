@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 /**
    A class that implements a queue of objects by using
    a chain of linked nodes that has both head and tail references.
@@ -17,8 +19,42 @@ public final class LinkedQueue<T> implements QueueInterface<T>
 		lastNode = null;
 	} // end default constructor
 
-//  < Implementations of the queue operations go here. >
-//  . . .
+	public void enqueue(T newEntry) {
+		Node newNode = new Node(newEntry, null);
+		
+		if(isEmpty()){
+			firstNode = newNode;
+		}
+		else{
+			lastNode.setNextNode(newNode);
+		}
+		lastNode = newNode;
+	}
+
+	public T dequeue() {
+		T front = getFront();
+		firstNode.setData(null);
+		firstNode = firstNode.getNextNode();
+		if(firstNode == null)
+			lastNode = null;
+		return front;
+	}
+
+	public T getFront(){
+		if(isEmpty())
+			throw new NoSuchElementException();
+		else
+			return firstNode.getData();
+	}
+
+	public boolean isEmpty() {
+		return firstNode == null && lastNode == null;
+	}
+
+	public void clear() {
+		firstNode = null;
+		lastNode = null;
+	}
 
 	private class Node
 	{
@@ -57,34 +93,4 @@ public final class LinkedQueue<T> implements QueueInterface<T>
 			next = nextNode;
 		} // end setNextNode
 	} // end Node
-
-	@Override
-	public void enqueue(T newEntry) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public T dequeue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public T getFront() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		
-	}
 } // end LinkedQueue
