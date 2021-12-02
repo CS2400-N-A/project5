@@ -90,7 +90,7 @@ public UnsortedLinkedDictionary(){
 
     @Override
     public Iterator<V> getValueIterator() {
-        Iterator<V> keyV = new KeyIterator<V>();
+        Iterator<V> keyV = new ValueIterator<V>();
         return keyV;
     }
 
@@ -123,6 +123,14 @@ public UnsortedLinkedDictionary(){
             value = dataValue;
             next = nextNode;
             } // end constructor
+        
+        public K getKey(){
+            return key;
+        }
+
+        public V getValue(K key){
+            return value;
+        }
         } // end Node
 			private class KeyIterator<K> implements Iterator<K> {
     
@@ -137,7 +145,7 @@ public UnsortedLinkedDictionary(){
 				public K next() {
 					Node nextNode = firstNode.next;
 					
-				return nextNode.getValue();
+				return (K)nextNode.getKey();
 				}
 				
 				public void remove() {
@@ -159,7 +167,7 @@ public UnsortedLinkedDictionary(){
 				public V next() {
 					Node nextNode = firstNode.next;
 					
-				return nextNode.getValue(key);
+				return (V)nextNode.getValue(key);
 				}
 				
 				public void remove() {
