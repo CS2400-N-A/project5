@@ -11,7 +11,6 @@ class GraphVertex<T> {
 	
 	public GraphVertex(T dat) {
 		data = dat;
-		
 	}
 	
 	

@@ -84,13 +84,14 @@ public UnsortedLinkedDictionary(){
 
     @Override
     public Iterator<K> getKeyIterator() {
+        
         Iterator<K> keyI = new KeyIterator<K>();
         return keyI;
     }
 
     @Override
     public Iterator<V> getValueIterator() {
-        Iterator<V> keyV = new KeyIterator<V>();
+        Iterator<V> keyV = new ValueIterator<V>();
         return keyV;
     }
 
@@ -124,9 +125,9 @@ public UnsortedLinkedDictionary(){
             next = nextNode;
             } // end constructor
         } // end Node
-			private class KeyIterator<K> implements Iterator<K> {
+			private class KeyIterator<T> implements Iterator<K> {
     
-    
+				private K key;
 				public boolean hasNext() {
 					if(firstNode == null || firstNode.next == null) {
 						return false;
@@ -137,18 +138,16 @@ public UnsortedLinkedDictionary(){
 				public K next() {
 					Node nextNode = firstNode.next;
 					
-				return nextNode.getValue();
+				return nextNode.key;
 				}
 				
 				public void remove() {
-					
 				}
 			
 			}
 			
-			private class ValueIterator<V> implements Iterator<V> {
+			private class ValueIterator<T> implements Iterator<V> {
     
-                private K key;
 				public boolean hasNext() {
 					if(firstNode == null || firstNode.next == null) {
 						return false;
@@ -159,13 +158,12 @@ public UnsortedLinkedDictionary(){
 				public V next() {
 					Node nextNode = firstNode.next;
 					
-				return nextNode.getValue(key);
+				return nextNode.value;
 				}
 				
 				public void remove() {
 					
 				}
-				
 				
 			
 			}
